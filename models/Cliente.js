@@ -22,6 +22,12 @@ const clienteSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    horas: {
+        type: String,
+    },
+    estatus: {
+        type: String,
+    },
     administrador: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Administrador',

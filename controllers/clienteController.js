@@ -19,6 +19,13 @@ const obtenerClientes = async (req, res) => {
     res.json(clientes);
 };
 
+const obtenerUsuarios = async (req, res) => {
+    //Filto para solo ver tus propias altas a aprtir del .where() -> ... (Borrar del where para atras para mostrar todos)
+    const clientes = await Cliente.find();
+
+    res.json(clientes);
+};
+
 const obtenerCliente = async (req, res) => {
     const {id} = req.params;
     const cliente = await Cliente.findById(id);
@@ -87,6 +94,7 @@ const eliminarCliente = async (req, res) => {
 export {
     agregarCliente,
     obtenerClientes,
+    obtenerUsuarios,
     obtenerCliente,
     actualizarCliente,
     eliminarCliente,

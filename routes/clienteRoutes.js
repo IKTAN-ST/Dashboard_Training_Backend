@@ -3,6 +3,7 @@ const router = express.Router();
 import {
     agregarCliente, 
     obtenerClientes,
+    obtenerUsuarios,
     obtenerCliente,
     actualizarCliente,
     eliminarCliente,
@@ -12,7 +13,8 @@ import checkAuth from "../middleware/authMiddleware.js"
 router.
     route('/')
     .post(checkAuth, agregarCliente)
-    .get(checkAuth, obtenerClientes);
+    .get(checkAuth, obtenerClientes)
+
 
 router
     .route('/:id')
