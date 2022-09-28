@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
 
+const generarFolio = () => {
+    return Date.now().toString(32);
+};
+
 const clienteSchema = mongoose.Schema({
     nombre: {
         type: String,
@@ -28,6 +32,10 @@ const clienteSchema = mongoose.Schema({
     estatus: {
         type: String,
     },
+    folio: {
+        type: String,
+        unique: true,
+    },
     administrador: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Administrador',
@@ -35,6 +43,12 @@ const clienteSchema = mongoose.Schema({
 }, {
     timestamps: true,
 });
+
+clienteSchema.pre("save", async function(next){
+    this.folio = await generarFolio() 
+    console.log(this.folio)
+    next();
+})
 
 const Cliente = mongoose.model('Cliente', clienteSchema)
 
